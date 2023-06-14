@@ -1,3 +1,4 @@
+# https://www.acmicpc.net/problem/1916
 n = int(input())
 m = int(input())
 class Edge:
