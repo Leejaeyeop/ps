@@ -15,18 +15,21 @@ for _ in range(m):
 s,d = map(int,input().split(' '))
 
 def dijkstra(start):
+    # 거리 초기화
     distance = [int(1e8) for _ in range(n+1)]
+    # 시작점 거리 -> 0
     distance[start] = 0
     q = []
-    # 저장된 해당 노드 까지의 비용, 노드 이름
+    # 해당 노드 까지의 비용, 노드 이름
     heapq.heappush(q, (0, start))
     while q:
         dist, node = heapq.heappop(q)
+        # 해당 노드 까지의 비용이 '현재 까지 계산된' 해당 node로 가는 비용 보다 적다 -> 계산 불필요 continue
         if distance[node] < dist:
             continue
         cost = costs[node]
         for edge in cost:
-            # 저장된 해당 노드 까지의 비용 + 현재에서 다른 node로 가는 비용 < 최종적으로 해당 noed로 가는 비용
+            # 저장된 해당 노드 까지의 비용 + 현재에서 다른 node로 가는 비용 < '현재 까지 계산된' 해당 node로 가는 비용
             if dist + edge[1] < distance[edge[0]]:
                 distance[edge[0]] = dist + edge[1]
                 heapq.heappush(q, (distance[edge[0]] , edge[0]))
