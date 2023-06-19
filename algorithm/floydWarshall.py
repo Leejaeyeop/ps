@@ -19,10 +19,13 @@ for _ in range(m):
     graph[a][b] = c
 
 # 점화식에 따라 플로이드 워셜 알고리즘을 수행
+# 거쳐 가는 노드
 for k in range(1, n + 1):
-    for a in range(1, n + 1):
-        for b in range(1, n + 1):
-            graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
+    # 출발 노드  
+    for i in range(1, n + 1):
+        # 도착 노드        
+        for j in range(1, n + 1):
+            graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
 
 # 수행된 결과를 출력
 for a in range(1, n + 1):
