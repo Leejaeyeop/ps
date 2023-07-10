@@ -1,5 +1,5 @@
 # https://www.acmicpc.net/problem/1916
-# class 만들기
+
 # 첫번째 도시 pq에 삽입
 # 거리 초기화 
 import heapq  
