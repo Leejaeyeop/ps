@@ -11,9 +11,12 @@ a.sort()
 
 answer = 0
 for i in range(0, len(a)):
+    # 항상 끝과 끝
     leftIndex = 0
     rightIndex = len(a) -1
-    while leftIndex < rightIndex:  
+    # left는 항상 right 보다 작아야 한다.
+    while leftIndex < rightIndex:
+        # 검사 하고자 하는 수와 left, right이 일치함 -> 변경
         if leftIndex == i:
             leftIndex +=1
             continue
@@ -25,8 +28,10 @@ for i in range(0, len(a)):
         if result == a[i]:
             answer +=1
             break
+        # up 
         elif result < a[i]:
             leftIndex +=1
+        # down
         elif result > a[i]:
             rightIndex -=1
                
