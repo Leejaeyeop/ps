@@ -8,27 +8,41 @@ n = int(input())
 
 targets = list(map(int, input().split()))
 
-d = [targets[0]]
-def lowerBound(target):
-    begin = 0
-    end = len(d)
+lis = [targets[0]]        
+ 
+# 직접 함수 만들어 호출
+def doDirect(): 
+    def lowerBound(target):
+        begin = 0
+        end = len(lis)
 
-    while begin<end :
-        mid = (begin + end) // 2
-        res = d[mid]
+        while begin<end :
+            mid = (begin + end) // 2
+            res = lis[mid]
 
-        if res < target:
-            begin = mid +1
+            if res < target:
+                begin = mid +1
+            else:
+                end = mid
+        return end
+    for i in range(1, n):
+        target = targets[i]
+        if lis[-1] < target:
+            lis.append(target)
         else:
-            end = mid
-    return end         
+            idx = lowerBound(target)
+            lis[idx] = target
 
-for i in range(1, n):
-    target = targets[i]
-    if d[-1] < target:
-        d.append(target)
-    else:
-        idx = lowerBound(target)
-        d[idx] = target
+# 라이브러리 호출
+def doLibrary():
+    for i in range(1, n):
+        target = targets[i]
+        if lis[-1] < target:
+            lis.append(target)
+        else:
+            idx = bisect.bisect_left(lis, target)
+            lis[idx] = target
 
-print(len(d))
+doLibrary()
+
+print(len(lis))
