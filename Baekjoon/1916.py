@@ -29,7 +29,7 @@ def dijkstra(start):
             continue
         cost = costs[node]
         for edge in cost:
-            # 저장된 해당 노드 까지의 비용 + 현재에서 다른 node로 가는 비용 < '현재 까지 계산된' 해당 node로 가는 비용
+            # 저장된 해당 노드 까지의 비용 + 해당노드에서 다른 node로 가는 비용 < '현재 까지 계산된' 해당 node로 가는 비용
             if dist + edge[1] < distance[edge[0]]:
                 distance[edge[0]] = dist + edge[1]
                 heapq.heappush(q, (distance[edge[0]] , edge[0]))
