@@ -5,7 +5,8 @@
 
     ### 필수 알고리즘
 
--   back tracking (dfs,bfs)
+-   dfs,bfs
+-   back tracking
 -   이분 탐색 (start, end, mid, 시간 복잡도 logN/ while start<=end)
 -   그리디
 -   최소 신장 트리 - 크루스칼 (그래프의 정점들을 가장 적은 비용으로 연결) O(ElogE), 프림(동일 하나, 그래프의 간선이 많을 경우) O(ElogV)
