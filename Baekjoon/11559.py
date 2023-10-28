@@ -40,7 +40,8 @@ def bfs(x,y,graph):
     if len(q) >=4:
         while q:
             x,y = q.pop()
-            graph[x][y] = "."
+            # 터뜨린걸 _로 표시
+            graph[x][y] = "_"
         return True
     return False
 
@@ -48,7 +49,8 @@ def bfs(x,y,graph):
 def applyGravity(graph):
     for i in range(12):
         for j in range(6):
-            if graph[i][j] == ".":
+            # 터뜨린곳 위에서부터 swap
+            if graph[i][j] == "_":
                 preValue = "."
                 for k in range(i+1):
                     temp = preValue
