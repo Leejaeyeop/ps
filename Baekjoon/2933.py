@@ -44,13 +44,16 @@ def getHeights(cluster, bottoms):
 
 
 # 땅붙 확인
-def isConnected(x, y, cluster, bottoms):
+def isConnected(x, y, cluster, bottoms, checked):
     q = [(x,y)]
     # 무한 루프 방지
-    visited = [[False for _ in range(c)] for _ in range(r)]
 
     while q:
         x,y = q.pop()
+        if checked[x][y]:
+            return True
+        if cluster[x][y]:
+            continue
         # 클러스터에 포함 시킨다.
         cluster[x][y] = True
         # 밑바닥 -> true
@@ -64,27 +67,33 @@ def isConnected(x, y, cluster, bottoms):
             nx = x + dx[i]
             ny = y + dy[i]
 
-            if -1 < nx < r and -1< ny < c and graph[nx][ny] == "x" and not(visited[nx][ny]):
-                visited[nx][ny] = True
+            if -1 < nx < r and -1< ny < c and graph[nx][ny] == "x":
                 q.append((nx,ny))
                 
     return False    
 
 def check(x,y):
+    checked =  [[False for _ in range(c)] for _ in range(r)]
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
 
         if -1 < nx < r and -1< ny < c and graph[nx][ny] == "x":
-            cluster =  [[False for _ in range(c)] for _ in range(r)]
+            cluster = [[False for _ in range(c)] for _ in range(r)]
+
             bottoms = []
             # 연결이 안됨
-            if not(isConnected(nx,ny,cluster,bottoms)):
+            if not(isConnected(nx,ny,cluster,bottoms,checked)):
                 # 높이 구한다.
                 h = getHeights(cluster, bottoms)
                 # 높이 만큼 한번에 다운 시킨다.
                 fallCluster(cluster, h)
                 break
+            else:
+                for j in range(r):
+                    for k in range(c):
+                        if cluster[j][k]:
+                            checked[j][k] = True
 
 # 막대기 날리고
 # 막대기에 미네랄 맞으면 검사
