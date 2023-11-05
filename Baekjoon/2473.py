@@ -33,6 +33,7 @@ for i in range(0,len(liquids)-1):
         elif sum>0:
             right -=1
         else:
-            break        
+            print(*answer)
+            sys.exit()      
 
 print(*answer)
