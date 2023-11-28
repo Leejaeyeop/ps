@@ -8,7 +8,7 @@ let input = [];
 readline.on('line', function(line) {
     input.push(line)
 }).on('close', function(){
-    const d = {}
+    const d = new Set()
     const dx = [0,1,0,-1]
     const dy = [1,0,-1,0]
     
@@ -46,8 +46,8 @@ readline.on('line', function(line) {
                     nstr[nIdx] = "0"
                     nstr = nstr.join("")
 
-                    if(d[nstr] === undefined) {
-                        d[nstr] = 1
+                    if(!d.has(nstr)) {
+                        d.add(nstr)
                         nq.push(nstr)
                     } 
                 }
@@ -68,7 +68,7 @@ readline.on('line', function(line) {
     })
 
     let q = [str]
-    d[str] = 0
+    d.add(str)
     console.log(bfs(q,0))
 
     process.exit()
