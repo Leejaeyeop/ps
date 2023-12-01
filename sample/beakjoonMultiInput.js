@@ -8,5 +8,5 @@ let input = [];
 readline.on('line', function(line) {
     input.push(line)
 }).on('close', function(){
-    
+    process.exit()
 })
