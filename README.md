@@ -5,7 +5,7 @@
 
     ### 필수 알고리즘
 
--   dfs,bfs
+-   dfs,bfs (완전탐색)
 -   back tracking
 -   이분 탐색 (start, end, mid, 시간 복잡도 logN/ while start<=end)
 -   그리디
