@@ -1,8 +1,8 @@
 ## 알고리즘 문제 풀이 리파지토리
 
-- python & js 사용
+### python & js 사용
 
-  ### 필수 알고리즘
+### 필수 알고리즘 리스트
 
 - dfs,bfs (완전탐색)
 - back tracking
