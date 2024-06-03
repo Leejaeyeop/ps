@@ -1,5 +1,5 @@
 import sys  
-sys.setrecursionlimit(1000000) 
+sys.setrecursionlimit(200000) 
 
 def solution(n, tops):
     answer = 0
@@ -17,18 +17,18 @@ def solution(n, tops):
         # 윗 변에 삼각형이 접할때
         if top:
             if left_empty:
-                count = (3 * dp(idx + 1, True)) % 10007
-                count += dp(idx + 1, False) % 10007
+                count = (3 * dp(idx + 1, True)) 
+                count += dp(idx + 1, False)
             else:
-                count = (2 * dp(idx + 1, True)) % 10007
-                count += dp(idx + 1, False) % 10007
+                count = (2 * dp(idx + 1, True))
+                count += dp(idx + 1, False) 
         else:  # 윗 변에 삼각형이 존재 하지 않을때
             if left_empty:
-                count = (2 * dp(idx + 1, True)) % 10007
-                count += dp(idx + 1, False) % 10007
+                count = (2 * dp(idx + 1, True)) 
+                count += dp(idx + 1, False) 
             else:
-                count = dp(idx + 1, True) % 10007
-                count += dp(idx + 1, False) % 10007
+                count = dp(idx + 1, True) 
+                count += dp(idx + 1, False) 
         
         d[idx][left_empty] = count % 10007
         return d[idx][left_empty]
