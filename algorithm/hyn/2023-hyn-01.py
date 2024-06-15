@@ -10,18 +10,6 @@ def solution(k, n, reqs):
         req_obj[i] = []
     for a, b, c in reqs:
         req_obj[c - 1].append((a, b))
-    def check_time(mento_distribute, k, reqs):
-        mento = []
-        waiting = 0
-
-        for n in mento_distribute:
-            mento.append([0 for x in range(n)])
-        for s, f, num in reqs:
-            time = heapq.heappop(mento[num-1])
-            waiting += max(0, time-s)
-            heapq.heappush(mento[num-1], max(s, time)+f)
-
-        return waiting
 
     def get_result(idx, cnt):
         res = 0
