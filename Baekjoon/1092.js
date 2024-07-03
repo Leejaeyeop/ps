@@ -1,3 +1,4 @@
+// https://www.acmicpc.net/problem/1092
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -12,7 +13,7 @@ rl.on("line", (line) => {
 
 rl.on("close", () => {
   const n = +input[0];
-  const cranes = input[1]
+  let cranes = input[1]
     .split(" ")
     .map((el) => +el)
     .sort((a, b) => b - a);
@@ -20,11 +21,21 @@ rl.on("close", () => {
   const weight = input[3].split(" ").map((el) => +el);
   weight.sort((a, b) => a - b);
 
-  const lowerBound = (target) => {};
+  const lowerBound = (target) => {
+    while (left <= right) {}
+  };
 
-  while (true) {
+  while (weight.length > 0) {
     for (const crane of cranes) {
-      //   lowerBound();
+      let idx = lowerBound(crane);
+
+      if (idx === weight.length || weight[idx] > crane) {
+        idx--;
+      }
+
+      if (idx >= 0) {
+        weight.splice(idx, 1);
+      }
     }
   }
 });
