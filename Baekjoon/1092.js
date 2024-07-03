@@ -22,14 +22,27 @@ rl.on("close", () => {
   weight.sort((a, b) => a - b);
 
   const lowerBound = (target) => {
-    while (left <= right) {}
+    let left = 0;
+    let right = weight.length - 1;
+    while (left < right) {
+      let mid = Math.floor((left + right) / 2);
+      if (weight[mid] >= target) {
+        right = mid;
+      } else {
+        left = mid + 1;
+      }
+    }
+    return right;
   };
 
+  let answer = 0;
+  let pre = weight.length;
   while (weight.length > 0) {
+    answer++;
     for (const crane of cranes) {
       let idx = lowerBound(crane);
 
-      if (idx === weight.length || weight[idx] > crane) {
+      if (weight[idx] > crane) {
         idx--;
       }
 
@@ -37,5 +50,15 @@ rl.on("close", () => {
         weight.splice(idx, 1);
       }
     }
+
+    if (pre === weight.length) {
+      console.log(-1);
+      return;
+    } else {
+      pre === weight.length;
+    }
   }
+
+  console.log(answer);
+  return;
 });
