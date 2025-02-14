@@ -1,10 +1,10 @@
 # [level 2] 문자열 압축 - 60057 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/60057) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/60057?language=javascript) 
 
 ### 성능 요약
 
-메모리: 87.5 MB, 시간: 43.44 ms
+메모리: 37 MB, 시간: 33.39 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 31일 12:10:12
+2025년 02월 14일 20:55:41
 
 ### 문제 설명
 
