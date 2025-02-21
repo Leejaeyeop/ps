@@ -10,5 +10,5 @@ rl.on('line', function (line) {
     input = [line];
 }).on('close',function(){
     str = input[0];
-    console.log(str.split("").map(el => 'a' <= el && el <= 'z' ? el.toUpperCase() : el.toLowerCase()).join(""))
+    console.log(str.split("").map(el => el === el.toLowerCase() ? el.toUpperCase() : el.toLowerCase()).join(""))
 });
