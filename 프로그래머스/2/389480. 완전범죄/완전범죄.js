@@ -1,33 +1,27 @@
-// a 도둑 흔적 최소화
 function solution(info, n, m) {
-    var answer = Infinity;
-    
-    // [index][a 흔적][b 흔적]
-    const visited = Array.from({length:info.length},()=>Array.from({length:n},()=>Array.from({length:m},()=>false)))
-    
-    const dfs = (idx,trailA,trailB) => {
-        
-        if(idx === info.length) {
-            answer = Math.min(answer,trailA)
-            return 
-        }
-        if(visited[idx][trailA][trailB]) return
-        
-        const [costA,costB] = info[idx]
-        
-        // b가 훔친다.
-        if(trailB + costB<m) {
-            dfs(idx+1,trailA,trailB+costB)
-        }
-        // a가 훔친다.
-        if(trailA + costA <n) {
-            dfs(idx+1,trailA+costA,trailB)
-        }    
+    const len = info.length;
+    const INF = 9999;
 
-        return visited[idx][trailA][trailB] = true
+    let dp = Array.from({ length: len + 1 }, () => Array(m).fill(INF));
+
+    dp[0][0] = 0;
+
+    for (let i = 0; i < len; i++) {
+        let aTrace = info[i][0], bTrace = info[i][1];
+
+        for (let j = m - 1; j >= 0; j--) {
+            if (dp[i][j] === INF) continue;
+
+            let newA = dp[i][j] + aTrace;
+            let newB = j;
+            if (newA < n) dp[i + 1][newB] = Math.min(dp[i + 1][newB], newA);
+
+            let newA2 = dp[i][j];
+            let newB2 = j + bTrace;
+            if (newB2 < m) dp[i + 1][newB2] = Math.min(dp[i + 1][newB2], newA2);
+        }
     }
-    
-    dfs(0,0,0)
-    
-    return answer === Infinity ? -1 : answer ;
+
+    let result = Math.min(...dp[len]);
+    return result === INF ? -1 : result;
 }
