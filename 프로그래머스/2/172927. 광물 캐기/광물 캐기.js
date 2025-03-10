@@ -1,49 +1,35 @@
-// 곡갱이 최대 5개 광물
-// 한번 사용 곡갱이는 계속 사용
-// 피로도 최소 
 function solution(picks, minerals) {
-    var answer = Infinity
-    const fatigues = [[1,1,1],[5,1,1],[25,5,1]]
-    let totalPickCnt = picks.reduce((acc,cur) => acc+cur)
+    const fatigueTable = {
+        diamond: [1, 5, 25],
+        iron: [1, 1, 5],
+        stone: [1, 1, 1]
+    };
     
-    const doMine = (order) => {
-        const getIdx = {
-            "diamond" : 0,
-            "iron" : 1,
-            "stone" : 2,
-        }
-        
-        let fatigue = 0
-        
-        for(let idx = 0; idx<minerals.length; idx ++) {
-            const curMineral = minerals[idx]
-            
-            let curPick = order[+Math.floor(idx/5)]
-            if(curPick === undefined) break
-            
-            fatigue += fatigues[curPick][getIdx[curMineral]]
-        }
-        
-        answer = Math.min(answer,fatigue)
+    const totalPicks = picks.reduce((sum, count) => sum + count, 0);
+    const maxGroups = Math.min(totalPicks, Math.ceil(minerals.length / 5));
+    const groups = [];
+    
+    for (let i = 0; i < maxGroups * 5; i += 5) {
+        const group = minerals.slice(i, i + 5);
+        const fatigue = group.reduce((acc, mineral) => {
+            acc[0] += fatigueTable[mineral][0]; // 다이아 곡괭이 사용 시 피로도
+            acc[1] += fatigueTable[mineral][1]; // 철 곡괭이 사용 시 피로도
+            acc[2] += fatigueTable[mineral][2]; // 돌 곡괭이 사용 시 피로도
+            return acc;
+        }, [0, 0, 0]);
+        groups.push(fatigue);
     }
     
-    const dfs = (idx,order) => {
-        if(idx === totalPickCnt) {
-            doMine(order)
-        }
+    groups.sort((a, b) => b[2] - a[2]); // 돌 곡괭이 사용 시 피로도가 큰 순으로 정렬
+    
+    let fatigueSum = 0;
+    for (const group of groups) {
+        let pickIndex = picks.findIndex(count => count > 0);
+        if (pickIndex === -1) break;
         
-        for(let i=0; i<3; i++) {
-            if(picks[i] > 0) {
-                picks[i]--
-                order[idx] = i
-                dfs(idx+1,order)
-                picks[i]++
-                order[idx] = -1
-            }
-        }
+        fatigueSum += group[pickIndex];
+        picks[pickIndex]--;
     }
     
-    dfs(0,Array(totalPickCnt).fill(-1))
-    
-    return answer;
+    return fatigueSum;
 }
