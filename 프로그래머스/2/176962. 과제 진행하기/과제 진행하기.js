@@ -16,7 +16,7 @@ function solution(plans) {
     const workStack = []
     let time = 0
     while(plans.length > 0) {
- if(workStack.length > 0) {
+        if(workStack.length > 0) {
             let [name, start, playtime] = workStack.pop()
             playtime--
             if(playtime === 0) {
@@ -25,13 +25,9 @@ function solution(plans) {
                 workStack.push([name, start, playtime])
             }
         }
-                // 현재 시각에 시작하는 plan이 있는지 확인
+        
+        // 현재 시각에 시작하는 plan이 있는지 확인
         if(plans.at(-1)[1] === time) {
-            // if(workStack.at(-1) && workStack.at(-1)[2] === 1) {
-            //     const [name] = workStack.pop()
-            //     answer.push(name)
-            // }
-            
             workStack.push(plans.pop())
         } 
         time++
