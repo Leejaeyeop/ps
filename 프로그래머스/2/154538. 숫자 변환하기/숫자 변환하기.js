@@ -4,16 +4,14 @@ function solution(x, y, n) {
     
     const bfs = () => {
         let stack = [x]
-        const nStack = []
         let cnt = 0
         while(stack.length > 0) {
+           const nStack = []
            while(stack.length > 0) {
                 const num = stack.pop()
-
                 if(num === y) {
                     return cnt
                 }
-               
                const nNums = [num*2,num*3,num+n]
                
                for(let i=0; i<3; i++) {
@@ -24,8 +22,7 @@ function solution(x, y, n) {
                }
                
            }
-           stack = [...nStack]
-           nStack.length = 0
+           stack = nStack
            cnt++
         }
         
