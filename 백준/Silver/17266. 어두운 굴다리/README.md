@@ -20,19 +20,19 @@
 
 <p>다음 그림을 보자.</p>
 
-<p style="text-align: center;"><img alt="" src=""></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/d21c182b-3a7d-48ba-b198-65a1bd3ddd98/-/preview/"></p>
 
 <p style="text-align: center;"><strong>가로등의 높이가 H라면 왼쪽으로 H, 오른쪽으로 H만큼 주위를 비춘다.</strong></p>
 
 <p>다음 그림은 예제1에 대한 설명이다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 175px; width: 500px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/a1f0fc3c-7c16-4108-bb18-31fe9ff3bbe4/-/preview/" style="height: 175px; width: 500px;"></p>
 
 <p>가로등의 높이가 1일 경우 0~1사이의 길이 어둡기 때문에 상빈이는 지나가지 못한다.</p>
 
 <p>아래 그림처럼 높이가 2일 경우 0~5의 모든 길이 밝기 때문에 상빈이는 지나갈 수 있다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 220px; width: 500px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/0c74958f-4437-405d-9242-f204282c0b45/-/preview/" style="height: 220px; width: 500px;"></p>
 
 ### 입력 
 
